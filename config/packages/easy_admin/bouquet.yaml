@@ -1,0 +1,37 @@
+easy_admin:
+  entities:
+# ENTITY Bouquet
+    Bouquet:
+      class: App\Entity\Bouquet
+      form:
+        fields:
+          - { property: 'prix'}
+          - { property: 'nom'}
+          - { property: 'style'}
+          - { property: 'composition'}
+      help: 'Gérer les bouquets'
+      label: 'Bouquets'
+      edit:
+        title: 'Modifier le %%entity_label%% n°%%entity_id%%'
+        fields:
+          - { property: 'nom', label: 'Nom' }
+          - { property: 'prix', label: 'Prix' }
+          - { property: 'style', label: 'Style' }
+          - { property: 'composition', label: 'Composition' }
+      list:
+        fields:
+          - { property: 'nom'}
+          - { property: 'prix'}
+          - { property: 'style'}
+          - { property: 'composition'}
+        title: 'Bouquet les plus récents'
+        actions:
+          show: { name: show, type: method, label: 'Plus', icon: eye }
+          edit: { name: edit, type: method, label: 'Éditer', icon: pencil }
+          delete: { name: delete, type: method, label: 'Supprimer', icon: trash }
+          new: { name: new, type: method, label: 'Ajouter un produit', icon: plus }
+        sort: 'createdAt'
+        batch_actions: [ 'delete']
+      search:
+        sort: ['nom', 'ASC']
+        

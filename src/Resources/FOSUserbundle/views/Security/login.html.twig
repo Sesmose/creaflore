@@ -1,0 +1,49 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends 'base.html.twig'%}
+{% block title %}Se connecter{% endblock %}
+{% block stylesheets %}
+    <style>
+        #error_log{
+            color: red;
+            font-size: 1.2em;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+
+{% block fos_user_content %}
+
+    <div class="container mt-5 elegant-color-dark">  
+
+        <form action="{{ path("fos_user_security_check") }}" method="post" class="text-center text-white p-5">
+
+            <p class="h4 mb-4">Se connecter</p>
+            {% if error %}
+            <div id="error_log">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+        <label for="username">{{ 'security.login.username'|trans }}</label>
+         <input class="form-control mb-4" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+  
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input class="form-control mb-4" type="password" id="password" name="_password" required="required" autocomplete="current-password" />  
+ 
+    <div class="d-flex justify-content-around">
+            <div>
+                <!-- Remember me -->
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" />
+                    <label class="custom-control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                </div>
+            </div> 
+    
+        </div>
+    <input class="btn btn-white btn-rounded" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+</form>
+
+{% endblock fos_user_content %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Bouquet{% endblock %}
+
+{% block body %}
+    <h1>Edit Bouquet</h1>
+
+    {{ include('bouquet/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('bouquet_index') }}">back to list</a>
+
+    {{ include('bouquet/_delete_form.html.twig') }}
+{% endblock %}

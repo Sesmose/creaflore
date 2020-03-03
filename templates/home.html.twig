@@ -1,0 +1,78 @@
+{% extends 'base.html.twig'%}
+
+{% block stylesheets %}
+
+<style>
+    .card{
+        display: inline-block;
+        margin-left: 2em;
+        margin-top: 2em;
+    }
+    .shop{
+            color: black;
+    }
+    .shop:hover{
+            color: black;
+    }
+    span{
+            color:black !important;
+    }
+    #panier{
+      color: black;
+    }
+    #panier:hover{
+      color: black;
+    }
+</style>
+{% endblock %}
+{% block body %}
+
+        <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h2 class="display-4">Le Fleuriste</h2>
+    <h3> Bienvenu sur le site du Fleuriste spécialiste des fleurs sur internet.<br> Retrouvez tous nos bouquets pour toutes les occasions !</h3>
+  </div>
+</div>
+<div class="container my-5">
+        <h2 class="text-center">Nos dernières créations !</h2>
+    <div class="row">
+   {% for dernier in derniers %}
+       <div class="col-md-4">
+            <!-- Card -->
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{asset('images/rosesjpg.jpg')}}"
+                  alt="bouquet image">
+              <!-- Card image -->
+              <!-- Card content -->
+              <div class="card-body">
+                <!-- Category & Title -->
+                <h5 class="card-title mb-1">
+                  <strong>
+                    <p class="dark-grey-text">{{ dernier.nom}}</p>
+                  </strong>
+                </h5>
+                <span class="badge badge-danger mb-2">{{ dernier.style }}</span>
+                <!-- Card footer -->
+                <div class="card-footer pb-0">
+                  <div class="row mb-0">
+                    <span class="float-left mr-5">
+                      <strong>{{ dernier.prix }} €</strong>
+                    </span>
+                    <span class="float-right ml-5">
+                      <a class="shop" href="{{path('bouquet.show', { id: dernier.id, slug: dernier.slug})}}">Voir</a>
+
+                        <a id="panier" href="{{ path('cart_add', { id: dernier.id})}}"><i class="fas fa-shopping-cart ml-3"></i></a>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- Card content -->
+            </div>
+            <!-- Card -->
+     </div>
+{% endfor %}
+
+</div>
+</div>
+{% endblock %}

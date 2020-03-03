@@ -1,0 +1,9 @@
+a, span{
+    color: white;
+    text-decoration: none;
+}
+a:hover, span:hover{
+    color: #00C851;
+}
+.navbar-brand:hover{
+    color: white;}

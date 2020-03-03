@@ -1,0 +1,12 @@
+easy_admin:
+  design:
+    assets:
+    menu:
+        - label: 'Bouquet'
+          icon: 'leaf'
+          children:
+            - { label: 'Liste des bouquets', icon: 'list', entity: 'Bouquet'}
+        - label: 'Clients'
+          icon: 'user'
+          children:
+            - { label: 'Liste des clients', icon: 'list', entity: 'User'}

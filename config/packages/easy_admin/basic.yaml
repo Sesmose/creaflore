@@ -1,0 +1,32 @@
+easy_admin:
+  site_name: 'Le Fleuriste'
+  formats:
+    datetime: 'd/m/Y H:i:s'
+    date: 'd/m/Y'
+    time: 'H:i'
+    number: '%.2f'
+  list:
+    collapse_actions: true
+    batch_actions:
+      delete: { name: delete, label: 'Supprimer', icon: trash }
+  entities:
+      User:
+          class: App\Entity\User
+          help: 'Gérer les clients'
+          label: 'clients inscrits'
+          list:
+            fields:
+              - { property: 'username', label: 'Pseudo'}
+              - { property: 'email', label: 'Email'}
+              - { property: 'roles', label: 'Rôle'}
+              - { property: 'last_login', type: 'datetime', label: 'Dernière Connexion'}
+            actions:
+              show: { name: show, type: method, label: 'Plus', icon: eye }
+              edit: { name: edit, type: method, label: 'Éditer', icon: pencil }
+              delete: { name: delete, type: method, label: 'Supprimer', icon: trash }
+              new: { name: new, type: method, label: 'Ajouter un client', icon: plus }
+          form:
+            fields:
+              - { property: 'username', label: 'Pseudo'}
+              - { property: 'email', label: 'Email'}
+              - { property: 'roles', label: 'Rôle'}

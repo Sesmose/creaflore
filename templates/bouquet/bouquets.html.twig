@@ -1,0 +1,25 @@
+
+{% block stylesheets %}
+
+<style>
+    .card{
+        display: inline-block;
+        margin-left: 2em;
+        margin-top: 2em;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{ asset('images/rosesjpg.jpg')}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{bouquet.nom}}</h5>
+    <p class="card-text">{{bouquet.composition}}</p>
+    <p class="card-text">{{bouquet.style}}</p>
+    <p class="card-text">{{bouquet.prix}} €</p>
+    <a href="{{path('bouquet.show', { id: bouquet.id, slug: bouquet.slug})}}" class="btn btn-dark btn-md">Voir</a>
+    <a href="{{ path('cart_add', { id: bouquet.id})}}" class="btn btn-dark btn-md">Ajouter</a>
+  </div>
+</div>
+{% endblock %}

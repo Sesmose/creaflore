@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Bouquet{% endblock %}
+
+{% block body %}
+    <h1>Create new Bouquet</h1>
+
+    {{ include('bouquet/_form.html.twig') }}
+
+    <a href="{{ path('bouquet_index') }}">back to list</a>
+{% endblock %}
